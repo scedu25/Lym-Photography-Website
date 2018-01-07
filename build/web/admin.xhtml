@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Upload photos</title>
+        <!--  Google fonts -->
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" type="text/css" />
+        <!--  font awesome -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <!--  bootstrap -->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+        <!--  animate.css -->
+        <link rel="stylesheet" href="assets/animate/animate.css" />
+        <link rel="stylesheet" href="assets/animate/set.css" />
+        <!--  gallery -->
+        <link rel="stylesheet" href="assets/gallery/blueimp-gallery.min.css" />
+        <!--  favicon -->
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="assets/style.css" /><script
+            type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+        ></script><script type="text/javascript"
+        src="unitegallery/js/unitegallery.min.js" ></script>
+        <link rel="stylesheet" href="unitegallery/css/unite-gallery.css" type="text/css" /><script
+            type="text/javascript" src="unitegallery/themes/default/ug-theme-default.js"
+        ></script>
+        <link rel="stylesheet" href="unitegallery/themes/default/ug-theme-default.css" type="text/css" />
+    </h:head>
+
+    <h:body>
+
+        <div class="topbar animated fadeInLeftBig"></div>
+        <!--  Header Starts -->
+        <div class="navbar-wrapper">
+            <div class="container">
+                <div class="navbar navbar-default navbar-fixed-top" id="top-nav">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <!--  Logo Starts -->
+                            <a class="navbar-brand" href="index.html"><img
+                                    src="logo.png" alt="logo" /></a>
+                            <!--  #Logo Ends --> <button type="button"
+                                                         class="navbar-toggle collapsed"> <span class="sr-only">Toggle
+                                    navigation</span> <span class="icon-bar"></span>
+                                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!--  Nav Starts -->
+                        <div class="navbar-collapse  collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li>
+                                    <a href="index.xhtml">Home</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right scroll">
+                                <li class="active">
+                                    <a href="index.xhtml">Top</a>
+                                </li>
+                                <li>
+                                    <a href="#about">About</a>
+                                </li>
+                                <li>
+                                    <a href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--  #Nav Ends -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  #Header Starts -->
+
+
+        <!--  works -->
+        <div id="works" class=" clearfix grid">
+            <br /><br />
+            <div id="gallery" style="display:none;">
+                <img alt="Image 1 Title" src="thumbs/image1.jpg" /> <img
+                    alt="Image 2 Title" src="thumbs/image2.jpg" />
+            </div><script type="text/javascript" >//<![CDATA[ 
+
+                jQuery(document).ready(function () {
+                    jQuery("#gallery").unitegallery();
+                });
+
+                //]]></script> <br /><br />
+        </div>
+
+
+
+        <h:form enctype="multipart/form-data" id="adminform">
+            <p:messages showDetail="true" />
+            <p:fileUpload value="#{admin.file}" mode="simple" />
+            <p:separator></p:separator>
+            <h:outputLabel style="margin-right:20px">For customer:</h:outputLabel>
+            <h:inputText value="#{admin.userName}"></h:inputText>
+            <p:commandButton id="submit" value="Submit" ajax="false" actionListener="#{admin.storeFile}" />
+            <p:commandButton id="delete" value="Delete" ajax="false" actionListener="#{admin.deleteFile}" />
+
+            <h:message for="submit"></h:message>
+        </h:form>
+
+
+
+        <!--
+        <h:form enctype="multipart/form-data" id="multiform">
+            <h:outputLabel for="username" value="Enter username:" />
+            <p:inputText id="username" value="{admin.userName}"></p:inputText>
+            <p:commandButton id="submit" value="Submit" ajax="false" />
+            <h:outputLabel for="upload" value="Upload photos:" />
+            <p:fileUpload id="upload" fileUploadListener="{admin.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                          multiple="true" update="messages" sizeLimit="10000000" fileLimit="5" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+            <p:messages id="messages" autoUpdate="true" closable="true" />
+            <p:growl id="messages" showDetail="true" />
+        </h:form>
+        -->
+
+        <!--  works -->
+        <!--  Footer Starts -->
+        <div class="footer text-center spacer">
+            <p class="wowload flipInX">
+                <a href="https://www.facebook.com/LymPhotography"><i
+                        class="fa fa-facebook fa-2x"></i></a> <a
+                    href="https://www.instagram.com/lymphotography/"><i
+                        class="fa fa-instagram fa-2x"></i></a> <a
+                    href="https://twitter.com/LymPhotography"><i
+                        class="fa fa-twitter fa-2x"></i></a> <a
+                    href="https://www.flickr.com/photos/77385115@N00/"><i
+                        class="fa fa-flickr fa-2x"></i></a>
+            </p>
+        </div>
+        <!--  # Footer Ends -->
+        <a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>
+        <!--  The Bootstrap Image Gallery lightbox, should be a child element of
+         the document body -->
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+            <!--  The container for the modal slides -->
+            <div class="slides"></div>
+            <!--  Controls for the borderless lightbox -->
+            <h3 class="title">
+                Title
+            </h3>
+            <a class="prev">�</a> <a class="next">�</a> <a
+                class="close">�</a>
+            <!--  The modal dialog, which will be used to wrap the lightbox content -->
+        </div>
+        <!--  jquery --><script src="assets/jquery.js" type="text/javascript"
+        ></script>
+        <!--  wow script --> <script src="assets/wow/wow.min.js"
+        type="text/javascript" ></script>
+        <!--  boostrap --> <script src="assets/bootstrap/js/bootstrap.js"
+        type="text/javascript" ></script>
+        <!--  jquery mobile --> <script src="assets/mobile/touchSwipe.min.js"
+        type="text/javascript" ></script> <script
+        src="assets/respond/respond.js" type="text/javascript" ></script>
+        <!--  gallery --> <script
+            src="assets/gallery/jquery.blueimp-gallery.min.js" type="text/javascript"
+        ></script>
+        <!--  custom script --> <script src="assets/script.js"
+        type="text/javascript" ></script>
+
+
+
+    </h:body>
+</html>
